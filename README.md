@@ -21,7 +21,7 @@ A API é baseada na Graph API do Facebook e utiliza protocolo HTTP com:
 ### Exemplo de Chamada API
 
 ```bash
-curl 'https://graph.facebook.com/v17.0/106540352242922/messages' \
+curl 'https://graph.facebook.com/v22.0/106540352242922/messages' \
 -H 'Content-Type: application/json' \
 -H 'Authorization: Bearer EAAJB...' \
 -d '{

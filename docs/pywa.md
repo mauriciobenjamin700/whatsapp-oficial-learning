@@ -68,6 +68,7 @@ Após criar a aplicação:
 ### 3. Número de Teste
 
 Se não tiver um número real conectado:
+
 - Use o número de teste fornecido pela Meta
 - Adicione até 5 números na lista "Allowed Numbers"
 - Mensagens só podem ser enviadas para números autorizados
@@ -88,6 +89,7 @@ wa = WhatsApp(
 ### Enviando Mensagens
 
 #### Mensagem de Texto
+
 ```python
 wa.send_message(
     to='NUMERO_DESTINATARIO',
@@ -96,6 +98,7 @@ wa.send_message(
 ```
 
 #### Enviando Imagem
+
 ```python
 wa.send_image(
     to='NUMERO_DESTINATARIO',
@@ -117,31 +120,40 @@ wa.send_image(
 ## Componentes Principais do PyWa
 
 ### 1. WhatsApp Client
+
 **Funcionalidade central** que permite:
+
 - Enviar e receber mensagens e mídia
 - Registrar callbacks para eventos
 - Gerenciar perfil e configurações do negócio
 - Administrar configurações da conta
 
 ### 2. Handlers (Manipuladores)
+
 **Sistema de callbacks** para:
+
 - Registrar funções que respondem a eventos específicos
 - Processar mensagens recebidas
 - Lidar com callbacks de botões e interações
 
 ### 3. Listeners (Ouvintes)
+
 **Monitoramento de eventos** para:
+
 - Escutar atualizações de usuários em tempo real
 - Processar diferentes tipos de mensagens
 - Reagir a mudanças de status
 
 ### 4. Filters (Filtros)
+
 **Sistema de condições** para:
+
 - Filtrar mensagens por conteúdo específico
 - Aplicar lógica condicional a callbacks
 - Direcionar mensagens para handlers específicos
 
 **Exemplo:**
+
 ```python
 # Processar apenas mensagens que contenham "olá"
 @wa.on_message(filters.text.contains("olá"))
@@ -150,20 +162,26 @@ def handle_greeting(client, message):
 ```
 
 ### 5. Updates (Atualizações)
+
 **Tipos de eventos** que o cliente pode receber:
+
 - Mensagens de texto, mídia, documentos
 - Callbacks de botões e menus
 - Mudanças de status de entrega
 - Eventos de usuário (online/offline)
 
 ### 6. Flows (Fluxos)
+
 **Criação de fluxos interativos** para:
+
 - Criar formulários e questionários
 - Coletar informações do usuário
 - Guiar conversas estruturadas
 
 ### 7. Error Handling (Tratamento de Erros)
+
 **Gerenciamento de exceções** para:
+
 - Capturar erros da API
 - Lidar com falhas de conexão
 - Implementar retry automático
@@ -201,6 +219,7 @@ if __name__ == "__main__":
 ## Recursos Avançados
 
 ### Webhook Configuration
+
 Para receber mensagens, configure webhooks:
 
 ```python
