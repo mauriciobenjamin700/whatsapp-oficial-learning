@@ -1209,6 +1209,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "pydantic-settings" },
     { name = "pywa", extra = ["fastapi"] },
+    { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
@@ -1227,6 +1228,7 @@ dev = [
 requires-dist = [
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "pywa", extras = ["fastapi"], specifier = ">=2.11.0" },
+    { name = "uvicorn", specifier = ">=0.35.0" },
 ]
 
 [package.metadata.requires-dev]

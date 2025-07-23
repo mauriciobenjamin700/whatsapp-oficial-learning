@@ -1,5 +1,5 @@
 from pywa_async import WhatsApp
-from pywa_async.types.message import SentMessage
+from pywa_async.types.sent_message import SentMessage
 
 
 class ReactionMessageService:

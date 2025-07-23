@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pywa_async import WhatsApp
 
 
 class Settings(BaseSettings):
@@ -17,3 +18,8 @@ class Settings(BaseSettings):
     TO: str = ""
 
 settings = Settings()
+
+async_wa: WhatsApp = WhatsApp(
+    phone_id=settings.PHONE_NUMBER_ID,
+    token=settings.ACCESS_TOKEN,
+)

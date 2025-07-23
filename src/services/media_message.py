@@ -1,7 +1,8 @@
 from typing import Optional
 
 from pywa_async import WhatsApp
-from pywa_async.types.message import Contact, SentMessage
+from pywa_async.types.message import Contact
+from pywa_async.types.sent_message import SentMessage
 
 
 class MediaMessageService:
@@ -23,7 +24,11 @@ class MediaMessageService:
         self.wa = wa
 
     async def send_image_message(
-        self, to: str, media_path: str, caption: Optional[str] = None
+        self, 
+        to: str, 
+        media_path: str | bytes,
+        content_type: Optional[str] = None,
+        caption: Optional[str] = None
     ) -> SentMessage:
         """
         Sends an image message to a specified recipient.
@@ -34,11 +39,18 @@ class MediaMessageService:
             caption (str, optional): The caption for the image.
         """
         return await self.wa.send_image(
-            to=to, image=media_path, caption=caption
+            to=to, 
+            image=media_path,
+            mime_type=content_type,
+            caption=caption
         )
 
     async def send_video_message(
-        self, to: str, media_path: str, caption: str = None
+        self, 
+        to: str, 
+        media_path: str | bytes,
+        content_type:str = "video/mp4",
+        caption: str = None
     ) -> SentMessage:
         """
         Sends a video message to a specified recipient.
@@ -53,10 +65,18 @@ class MediaMessageService:
             details of the sent video.
         """
         return await self.wa.send_video(
-            to=to, video=media_path, caption=caption
+            to=to, 
+            video=media_path, 
+            mime_type=content_type,
+            caption=caption
         )
 
-    async def send_audio_message(self, to: str, media_path: str) -> SentMessage:
+    async def send_audio_message(
+            self, 
+            to: str, 
+            media_path: str | bytes, 
+            content_type: Optional[str] = None
+        ) -> SentMessage:
         """
         Sends an audio message to a specified recipient.
 
@@ -68,10 +88,19 @@ class MediaMessageService:
             SentMessage: The sent message object containing
             details of the sent audio.
         """
-        return await self.wa.send_audio(to=to, audio=media_path)
+        return await self.wa.send_audio(
+            to=to, 
+            audio=media_path,
+            mime_type=content_type
+        )
 
     async def send_document_message(
-        self, to: str, media_path: str, caption: str = None
+        self, 
+        to: str, 
+        media_path: str | bytes,
+        filename: Optional[str] = None,
+        content_type: Optional[str] = None, 
+        caption: str = None
     ) -> SentMessage:
         """
         Sends a document message to a specified recipient.
@@ -85,7 +114,11 @@ class MediaMessageService:
             SentMessage: The sent message object containing
         """
         return await self.wa.send_document(
-            to=to, document=media_path, caption=caption
+            to=to, 
+            document=media_path,
+            filename=filename,
+            caption=caption,
+            mime_type=content_type
         )
 
     async def send_location_message(

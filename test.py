@@ -1,6 +1,6 @@
 from pywa import WhatsApp
 
-from settings import settings
+from core.settings import settings
 
 
 wa = WhatsApp(
