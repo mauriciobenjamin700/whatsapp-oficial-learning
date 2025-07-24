@@ -1,7 +1,10 @@
 from typing import Union
+
 from pydantic import field_validator
 from pywa_async.types import User
+
 from src.core import BaseSchema
+
 
 class UserResponse(BaseSchema):
     """
@@ -12,9 +15,11 @@ class UserResponse(BaseSchema):
         name (str): The name of the user.
         phone_number (str): The phone number of the user.
     """
+
     wa_id: str
     name: str | None
     input: str
+
 
 class MessageResponse(BaseSchema):
     """
@@ -25,6 +30,7 @@ class MessageResponse(BaseSchema):
         to_user (str): The recipient's phone number.
         from_phone_id (str): The phone number from which the message was sent.
     """
+
     id: str
     to_user: UserResponse
     from_phone_id: str

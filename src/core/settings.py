@@ -1,13 +1,12 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pywa_async import WhatsApp
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file='.env', 
-        env_file_encoding='utf-8',
+        env_file=".env",
+        env_file_encoding="utf-8",
         extra="ignore",
-        case_sensitive=True
+        case_sensitive=True,
     )
 
     ACCESS_TOKEN: str = ""
@@ -16,10 +15,11 @@ class Settings(BaseSettings):
     WABA_ID: str = ""
     VERSION: str = "v22.0"
     TO: str = ""
+    CALLBACK_URL: str = "https://example.com/callback"
+    PORT: int = 8001
+    VERIFY_TOKEN: str = "your_verify_token"
+    APP_ID: str = "your_app_id"
+    APP_SECRET: str = "your_app_secret"
+
 
 settings = Settings()
-
-async_wa: WhatsApp = WhatsApp(
-    phone_id=settings.PHONE_NUMBER_ID,
-    token=settings.ACCESS_TOKEN,
-)
